@@ -1,15 +1,9 @@
 {
-  "name": "apexstore",
+  "name": "typer-racer",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "oxlint",
-    "preview": "vite preview",
-    "test": "vitest run"
-  },
+  "scripts": { "dev": "vite", "build": "tsc -b && vite build", "lint": "oxlint", "preview": "vite preview", "test": "vitest run" },
   "dependencies": {
     "firebase": "^12.4.0",
     "framer-motion": "^12.42.2",
