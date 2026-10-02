@@ -1,170 +1,42 @@
 @import "tailwindcss";
-
-/* ============================================================
-   APEXSTORE DESIGN TOKENS
-   Dark is the native theme. `.light` on <html> overrides tokens.
-   ============================================================ */
-@theme {
-  --font-display: "Syne", "Inter", sans-serif;
-  --font-body: "Inter", -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
-
-  --color-void: #0b0d10;
-  --color-void-2: #08090b;
-  --color-panel: #15181d;
-  --color-panel-raised: #1c2027;
-  --color-panel-hi: #242933;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-hi: rgba(255, 255, 255, 0.16);
-
-  --color-text: #f3f5f7;
-  --color-text-muted: #8b93a3;
-  --color-text-faint: #565d6b;
-
-  --color-cyan: #00e5ff;
-  --color-violet: #7a5cff;
-  --color-lime: #8dff3d;
-  --color-emerald: #17c793;
-  --color-amber: #f5a524;
-  --color-crimson: #ff4757;
-
-  --shadow-color: 220 40% 2%;
-
-  --animate-marquee: marquee 32s linear infinite;
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
-}
-
-/* Light theme override — same token names, new values */
-html.light {
-  --color-void: #eef1f5;
-  --color-void-2: #e6e9ee;
-  --color-panel: #ffffff;
-  --color-panel-raised: #f7f8fa;
-  --color-panel-hi: #eef0f3;
-  --color-border: rgba(11, 13, 16, 0.08);
-  --color-border-hi: rgba(11, 13, 16, 0.14);
-
-  --color-text: #0b0d10;
-  --color-text-muted: #565f6e;
-  --color-text-faint: #8b93a3;
-}
-
-* {
-  border-color: var(--color-border);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--color-void);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
-  transition: background-color 0.25s ease, color 0.25s ease;
-  overflow-x: hidden;
-}
-
-::selection {
-  background: var(--color-cyan);
-  color: #000;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-void);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-panel-hi);
-  border-radius: 999px;
-  border: 2px solid var(--color-void);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-border-hi);
-}
-
-/* Focus visibility (accessibility floor) */
-:focus-visible {
-  outline: 2px solid var(--color-cyan);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* ============================================================
-   UTILITIES
-   ============================================================ */
-.glass {
-  background: color-mix(in srgb, var(--color-panel) 60%, transparent);
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-  border: 1px solid var(--color-border);
-}
-
-.text-gradient {
-  background: linear-gradient(115deg, var(--color-cyan), var(--color-violet) 60%, var(--color-lime));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.glow-cyan {
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-cyan) 40%, transparent),
-    0 8px 40px -8px color-mix(in srgb, var(--color-cyan) 55%, transparent);
-}
-
-.grain::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.035;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes pulse-soft {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.55;
-  }
-}
+:root { font-family: Inter, system-ui, sans-serif; color: #eef2f7; background: #07090d; font-synthesis: none; }
+* { box-sizing: border-box; } body { margin: 0; min-width: 320px; background: #07090d; color: #eef2f7; }
+button, textarea { font: inherit; } button { cursor: pointer; }
+.game-shell { min-height: 100vh; background: radial-gradient(circle at 50% -20%, #172131 0, #090c11 35%, #06080c 72%); overflow: hidden; }
+.topbar { height: 76px; padding: 0 5vw; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #202732; background:rgba(6,8,12,.82); backdrop-filter:blur(16px); position:sticky; top:0; z-index:10; }
+.brand { display:flex; gap:12px; align-items:center; min-width:190px; } .brand-mark { font-size:30px; transform:rotate(-20deg); color:#28d7ff; }
+.brand b { display:block; font:800 22px "Barlow Condensed",sans-serif; letter-spacing:1.5px; } .brand b span { color:#28d7ff; }
+.brand small { display:block; color:#687385; font:700 8px "JetBrains Mono",monospace; letter-spacing:2px; margin-top:1px; }
+nav { display:flex; gap:4px; } nav button { background:none; border:0; color:#737f90; padding:11px 16px; font:700 12px "JetBrains Mono",monospace; letter-spacing:1px; }
+nav button:hover, nav button.active { color:#fff; } nav button.active { border-bottom:2px solid #28d7ff; }
+.wallet { color:#f3b63f; font:700 13px "JetBrains Mono",monospace; min-width:190px; text-align:right; } .wallet span { margin-left:14px; color:#778293; font-size:10px; }
+main { width:min(1320px, 90vw); margin:auto; padding:64px 0 80px; }
+.hero-row, .section-heading { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:38px; }
+.eyebrow { color:#28d7ff; font:700 11px "JetBrains Mono",monospace; letter-spacing:2px; margin:0 0 9px; }
+h1,h2,h3 { font-family:"Barlow Condensed",sans-serif; margin:0; } h1 { font-size:clamp(58px,8vw,112px); line-height:.82; letter-spacing:-2px; } h1 em { color:#28d7ff; font-style:normal; }
+h2 { font-size:64px; line-height:.85; } .sub,.section-heading>p { color:#7c8798; max-width:570px; line-height:1.6; }
+.race-actions { display:flex; align-items:end; gap:25px; } .primary { background:#28d7ff; color:#061018; border:0; padding:16px 23px; font-weight:900; letter-spacing:.5px; box-shadow:0 0 35px rgba(40,215,255,.18); }
+.primary span { margin-left:18px; font-size:18px; } .mini-stats { display:flex; gap:16px; } .mini-stats b { font:800 18px "JetBrains Mono",monospace; } .mini-stats small { display:block; color:#657082; font-size:8px; margin-top:3px; }
+.track { height:330px; position:relative; border:1px solid #232b37; background:#0a0e14; overflow:hidden; box-shadow:0 20px 80px rgba(0,0,0,.35); }
+.track-grid { position:absolute; inset:0; opacity:.35; background:repeating-linear-gradient(90deg,transparent 0 58px,#1b2530 59px 60px), repeating-linear-gradient(0deg,transparent 0 48px,#111a23 49px 50px); transform:perspective(300px) rotateX(22deg) scale(1.4); transform-origin:bottom; }
+.lane { height:58px; position:relative; border-bottom:1px dashed #1d2630; } .lane-label { position:absolute; left:14px; top:20px; z-index:2; color:#566273; font:700 9px "JetBrains Mono"; } .lane-label.you { color:#28d7ff; }
+.racer { position:absolute; top:10px; transition:left .35s linear; width:75px; z-index:3; } .finish { position:absolute; right:4%; top:0; bottom:0; width:5px; background:repeating-linear-gradient(45deg,#fff 0 7px,#202631 7px 14px); box-shadow:0 0 18px rgba(255,255,255,.12); writing-mode:vertical-rl; text-align:center; font:700 8px "JetBrains Mono"; color:#8993a2; }
+.car { --car:#22d3ee; position:relative; width:180px; height:92px; filter:drop-shadow(0 14px 14px rgba(0,0,0,.45)); } .car-small { width:70px; height:38px; transform:scale(.72); transform-origin:left top; }
+.car-glow { position:absolute; width:130px; height:25px; left:25px; top:45px; background:var(--car); filter:blur(17px); opacity:.22; }
+.car-body { position:absolute; left:12px; top:31px; width:150px; height:35px; border-radius:12px 28px 9px 8px; background:linear-gradient(145deg,#e7edf4 0 10%,var(--car) 12% 68%,#151a22 69%); clip-path:polygon(4% 36%,13% 18%,35% 14%,48% 0,72% 4%,83% 22%,96% 32%,100% 72%,91% 92%,9% 92%,0 70%); box-shadow:inset -12px -8px 16px rgba(0,0,0,.28); }
+.car-body span { position:absolute; right:24px; top:13px; color:rgba(255,255,255,.72); font:900 10px "JetBrains Mono"; } .car-roof { position:absolute; left:69px; top:23px; width:58px; height:22px; border-radius:17px 20px 2px 2px; background:linear-gradient(135deg,#17202b,#526276); transform:skewX(-13deg); }
+.wheel { position:absolute; top:55px; width:20px; height:20px; border-radius:50%; background:#05070a; border:5px solid #303a48; box-shadow:inset 0 0 0 3px #0b0e14; } .wheel-a { left:30px; }.wheel-b { right:29px; }
+.typing-panel { margin-top:28px; position:relative; border:1px solid #242d39; background:#0b0f15; padding:25px; } .typing-meta { display:flex; justify-content:space-between; color:#596576; font:700 10px "JetBrains Mono"; letter-spacing:1px; margin-bottom:20px; } .typing-meta b { color:#28d7ff; }
+.text-display { min-height:96px; font:500 25px/1.65 "JetBrains Mono",monospace; color:#647083; } .text-display .ok { color:#eef2f7; }.text-display .bad { color:#ff5d68; background:rgba(255,71,87,.15); }.text-display .current { border-left:2px solid #28d7ff; animation:blink 1s step-end infinite; }
+textarea { width:100%; height:60px; resize:none; border:1px solid #27313e; background:#080b10; color:#fff; padding:17px; outline:none; caret-color:#28d7ff; } textarea:focus { border-color:#28d7ff; box-shadow:0 0 0 1px rgba(40,215,255,.18); }
+.overlay-hint { position:absolute; right:25px; bottom:43px; color:#4f5b6b; font:700 9px "JetBrains Mono"; } .result-card { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:20px; background:rgba(6,9,13,.92); z-index:5; }
+.result-card span { color:#697586; font:700 10px "JetBrains Mono"; }.result-card strong { color:#28d7ff; font:900 62px "Barlow Condensed"; }.result-card button,.car-card button { border:1px solid #34404f; background:#10161e; color:#eaf1f7; padding:10px 15px; font-weight:800; font-size:11px; }.result-card button:hover,.car-card button:hover { border-color:#28d7ff; color:#28d7ff; }
+.garage-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(235px,1fr)); gap:18px; } .car-card { border:1px solid #222b36; background:#0b0f15; padding:18px; transition:.2s; }.car-card.selected { border-color:#28d7ff; box-shadow:0 0 30px rgba(40,215,255,.08); }
+.car-stage { height:155px; display:grid; place-items:center; background:radial-gradient(circle,#16222d,#090c11 68%); margin-bottom:16px; overflow:hidden; } .car-info { display:flex; justify-content:space-between; align-items:start; margin-bottom:14px; }.car-info h3 { font-size:28px; }.car-info span,.car-info strong { display:block; color:#677384; font:700 9px "JetBrains Mono"; margin-top:5px; }.car-info strong { color:#f2b83f; font-size:12px; }
+.car-card button { width:100%; }.car-card .secondary { margin-top:8px; color:#28d7ff; }
+.stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:15px; }.stat-grid>div { border:1px solid #222b36; background:#0b0f15; padding:28px; }.stat-grid span { display:block; color:#596576; font:700 9px "JetBrains Mono"; }.stat-grid strong { display:block; font:900 60px "Barlow Condensed"; margin:7px 0; }.stat-grid small { color:#647083; }
+.offline-note { margin-top:20px; border:1px solid #1c3b42; background:#091317; padding:24px; display:flex; gap:15px; }.offline-note>span { color:#43e5a6; }.offline-note b { font:800 12px "JetBrains Mono"; color:#43e5a6; }.offline-note p { color:#718092; margin:8px 0 0; line-height:1.5; }
+.toast { position:fixed; top:92px; right:5vw; z-index:30; background:#eef2f7; color:#071017; padding:12px 18px; font:800 11px "JetBrains Mono"; box-shadow:0 15px 45px rgba(0,0,0,.35); }
+footer { border-top:1px solid #1b222c; padding:22px 5vw; display:flex; justify-content:space-between; color:#4f5a69; font:700 9px "JetBrains Mono"; letter-spacing:1px; }
+@keyframes blink { 50% { opacity:.2; } }
+@media(max-width:800px){ .topbar{padding:0 4vw}.brand{min-width:auto}.brand small{display:none}nav button{padding:10px 7px;font-size:9px}.wallet{min-width:auto;font-size:10px}.wallet span{display:none}main{width:92vw;padding-top:40px}.hero-row,.section-heading{display:block}.race-actions{margin-top:24px;align-items:center}.text-display{font-size:17px}.stat-grid{grid-template-columns:repeat(2,1fr)}footer{display:block}footer span{display:block;margin:5px 0}.lane{height:55px}.car-small{transform:scale(.55)}}
